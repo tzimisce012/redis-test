@@ -1,0 +1,1 @@
+Just do `sbt run` and then go to `localhost:9000/redis/asdf`
