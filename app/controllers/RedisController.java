@@ -1,6 +1,7 @@
 package controllers;
 
 import play.cache.AsyncCacheApi;
+import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
 
@@ -22,6 +23,15 @@ public class RedisController {
             Thread.sleep(2000);
             return CompletableFuture.completedFuture("Stored value");
         }, 5).thenApply(Results::ok);
+    }
+
+
+    public CompletionStage<Result> redisWithContext(String key) {
+        return cache.getOrElseUpdate(key, ()-> {
+            Thread.sleep(2000);
+            Http.Context context = Http.Context.current();
+            return CompletableFuture.completedFuture(context.toString());
+        }).thenApply(Results::ok);
     }
 
 }

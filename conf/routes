@@ -10,3 +10,6 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 
 GET     /redis/:key                 controllers.RedisController.redis(key: String)
+
+GET     /context/:key               controllers.RedisController.redisWithContext(key: String)
+

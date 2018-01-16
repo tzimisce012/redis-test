@@ -1,3 +1,5 @@
+## Deserialization
+
 Just do `sbt run` and then go to `localhost:9000/redis/asdf`
 
 The expiration time for the key is 5 seconds. If you do two request in less than this time, the first time the request 
@@ -18,3 +20,9 @@ java.io.NotSerializableException: No configured serialization-bindings for class
         at play.api.cache.redis.connector.AkkaDecoder.decode(AkkaSerializer.scala:97)
 
 ```
+
+## Context
+
+Again, do `sbt run` and this time go the following endpoint: `localhost:9000/context/asdf`.
+
+You will see that the context is not available anymore.
